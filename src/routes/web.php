@@ -1,21 +1,33 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', [ContactController::class, 'index']);
-Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
-Route::post('/contacts', [ContactController::class, 'store']);
-Route::get('/contacts/thanks', function () {
-    return view('thanks');
-})->name('contacts.thanks');
+use Illuminate\Support\Facades\Route;
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.index');
+});
+
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contacts.thanks');
+
+Route::post('/contacts/back', [ContactController::class, 'back'])->name('contacts.back');
+
+Route::match(['get', 'post'], '/contacts/confirm', [ContactController::class, 'confirm'])
+    ->name('contacts.confirm');
+
+
+require __DIR__ . '/auth.php';
