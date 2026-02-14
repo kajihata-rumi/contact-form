@@ -10,5 +10,8 @@
     <div class="thanks__heading">
         <h2>お問い合わせありがとうございました</h2>
     </div>
+
+    <a href="{{ route('contacts.index') }}">HOME</a>
+
 </div>
 @endsection

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+[x-cloak] {
+    display: none !important;
+}
+/* ボタン基礎（Tailwindの競合に勝つ） */
+.btn-primary {
+    @apply !px-6 !py-2 !rounded !bg-indigo-600 !text-white;
+}
+
+.btn-danger {
+    @apply !px-10 !py-2 !rounded !bg-red-600 !text-white hover: !bg-red-700;
+}
+
+.btn-ghost {
+    @apply !px-4 !py-2 !border !rounded;
+}
