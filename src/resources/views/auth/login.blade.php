@@ -9,7 +9,7 @@
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" novalidate>
             @csrf
 
             <!-- Email Address -->
@@ -18,12 +18,12 @@
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
                 @error('email')
-                <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                <p class="text-red-600 text-sm font-semibold mt-1">{{ $message }}</p>
                 @enderror
 
-            </div
+            </div>
 
-                <!-- Password -->
+            <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
@@ -32,9 +32,8 @@
                     name="password"
                     autocomplete="current-password" />
                 @error('password')
-                <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                <p class="text-red-600 text-sm font-semibold mt-1">{{ $message }}</p>
                 @enderror
-
             </div>
 
             <!-- Remember Me -->
