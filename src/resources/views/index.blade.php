@@ -4,14 +4,6 @@
 @section('content')
 <h1>お問い合わせ</h1>
 
-@if ($errors->any())
-<ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
-
 <form method="POST" action="{{ url('/contacts/confirm') }}">
     @csrf
 
@@ -59,8 +51,8 @@
         <input type="text" name="tel1" value="{{ old('tel1') }}" size="4"> -
         <input type="text" name="tel2" value="{{ old('tel2') }}" size="4"> -
         <input type="text" name="tel3" value="{{ old('tel3') }}" size="4">
-        @error('tel') 
-        <p class="error">{{ $message }}</p> 
+        @error('tel')
+        <p class="error">{{ $message }}</p>
         @enderror
     </div>
     <div>
@@ -92,6 +84,13 @@
         <textarea name="detail">{{ old('detail') }}</textarea>
     </div>
 
-    <button type="submit">確認</button>
+    <div style="text-align:center; margin-top:40px;">
+        <button
+            type="submit"
+            style="display:inline-block; padding:12px 48px; background:#000; color:#fff; border:none; border-radius:3px; cursor:pointer;">
+            確認
+        </button>
+    </div>
+
 </form>
 @endsection

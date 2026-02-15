@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<style>
+    body {
+        outline: 8px solid red !important;
+    }
+</style>
 
 <head>
     <meta charset="utf-8">

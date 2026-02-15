@@ -1,18 +1,58 @@
+:root {
+    --brown: #8b7969;
+    /* 文字・ボタン用の茶色 */
+    --beige: #f5f0eb;
+    /* 薄いベージュ背景 */
+    --white: #ffffff;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 [x-cloak] {
     display: none !important;
 }
+
+
+
+header {
+    background-color: var(--white);
+    color: var(--brown);
+}
+
+header h1,
+header a {
+    color: var(--brown);
+}
+
+
+
 /* ボタン基礎（Tailwindの競合に勝つ） */
 .btn-primary {
     @apply !px-6 !py-2 !rounded !bg-indigo-600 !text-white;
 }
 
+.btn-primary:hover {
+    @apply !bg-indigo-700;
+}
+
 .btn-danger {
-    @apply !px-10 !py-2 !rounded !bg-red-600 !text-white hover: !bg-red-700;
+    @apply !px-10 !py-2 !rounded !bg-red-600 !text-white;
+}
+
+.btn-danger:hover {
+    @apply !bg-red-700;
 }
 
 .btn-ghost {
     @apply !px-4 !py-2 !border !rounded;
+}
+input {
+    @apply !h-11 !text-sm;
+}
+.auth-card {
+    @apply !rounded-lg !shadow-lg;
+}
+.text-red-600 {
+    @apply !text-sm !mt-1;
 }
